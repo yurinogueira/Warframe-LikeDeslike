@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack server"
+    "start": "webpack server",
+    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "main": "index.js",
   "devDependencies": {

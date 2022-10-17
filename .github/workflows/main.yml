@@ -1,0 +1,29 @@
+name: Deploy to Github Pages
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploying to Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+
+      - name: Install packages
+        working-directory: ./src
+        run: npm install
+
+      - name: Deploy
+        working-directory: ./src
+        env:
+          GIT_USERNAME: "Yuri Nogueira"
+          GIT_EMAIL: "yurinogueira@id.uff.br"
+        run: |
+          git config user.name "$GIT_USERNAME" && git config user.email "$GIT_EMAIL"
+          npm run deploy
